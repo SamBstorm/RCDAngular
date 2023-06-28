@@ -1,0 +1,10 @@
+<div *ngIf="currentMovie">
+  <h3>Détail de {{currentMovie.title}}</h3>
+  <p>Année de sortie : {{currentMovie.release}}</p>
+  <p>Genre : {{currentMovie.genre}}</p>
+
+  <p *ngIf="currentMovie.imageUrl">
+    <img [src]="currentMovie.imageUrl" height="250px" >
+    <!-- alt="https://static.vecteezy.com/ti/vecteur-libre/p3/5502524-cinema-background-concept-movie-theatre-object-on-red-rideau-background-and-movie-time-with-electric-bulbs-frame-vector-illustration-gratuit-vectoriel.jpg"> -->
+  </p>
+</div>

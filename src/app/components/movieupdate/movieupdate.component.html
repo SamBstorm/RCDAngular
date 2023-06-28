@@ -1,0 +1,25 @@
+<h3>Modification de film</h3>
+<form *ngIf="currentMovie" [formGroup]="myFormGroup" (ngSubmit)="onSubmit()">
+  <p>
+    Titre : <input type="text" formControlName="title" />
+  </p>
+  <p>
+    Année de sortie : <input type="number" formControlName="release" />
+  </p>
+  <p>
+    Genre : <select formControlName="genre">
+              <option>Faites votre choix</option>
+              <option *ngFor="let genre of genreList" [value]="genre.value">
+                {{genre.label}}
+              </option>
+            </select>
+  </p>
+  <p>
+    Url image : <input type="text" formControlName="imageUrl" />
+  </p>
+  <p>
+    Url Trailer : <input type="text" formControlName="trailerUrl" />
+  </p>
+
+  <button [disabled]="myFormGroup.invalid">Valider</button>
+</form>

@@ -1,0 +1,8 @@
+<h3>Liste des films</h3>
+<ul>
+  <li *ngFor="let movie of movieList">
+    <a [routerLink]="['../moviedetail', movie.id]">{{movie.title}}</a> |
+    <button (click)="deleteMovie(movie.id)">Supprimer</button> |
+    <a [routerLink]="['../movieupdate', movie.id]">Modifier</a>
+  </li>
+</ul>
