@@ -1,1 +1,16 @@
 <h1>Demo Angular RCD 2023</h1>
+<hr />
+<nav>
+    <ul>
+        <li>
+            <a routerLink="movie/list">Section film</a>
+        </li>
+        <li>
+            <a *ngIf="!connected" routerLink="customer/login">Se connecter</a>
+            <a *ngIf="connected" (click)="Logout()">Se déconnecter</a>
+        </li>
+    </ul>
+</nav>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

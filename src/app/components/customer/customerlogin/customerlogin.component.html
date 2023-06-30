@@ -1,0 +1,12 @@
+<h3>Veuillez vous connecter :</h3>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="pseudo">Pseudo :</label>
+        <input formControlName="pseudo" type="text" name="pseudo" id="pseudo">
+    </div>
+    <div>
+        <label for="password">Mot de passe : </label>
+        <input formControlName="password" type="password" name="password" id="password">
+    </div>
+    <button>Se connecter</button>
+</form>

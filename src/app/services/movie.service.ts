@@ -4,6 +4,7 @@ import { Movie } from '../models/movie.model';
 import { Observable } from 'rxjs';
 import { MovieDTO } from '../models/movieDTO.model';
 import { Router } from '@angular/router';
+import { TokenResult } from '../models/tokenResult.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,11 @@ import { Router } from '@angular/router';
 export class MovieService {
 
   private url : string = "https://localhost:7020/api/movie"
+
+  private get _token(): string | null{
+    let currentUser : TokenResult | null = JSON.parse(sessionStorage.getItem("currentUser")??"null");
+    return (currentUser == null) ? null : currentUser?.token;
+  }
 
   constructor(
     private httpClient : HttpClient,
@@ -31,7 +37,8 @@ export class MovieService {
 
   post(newMovie : MovieDTO) {
     console.log(newMovie)
-    this.httpClient.post(this.url, newMovie).subscribe({
+    const headers = {'Authorization' : `Bearer ${this._token}`}
+    this.httpClient.post(this.url, newMovie, {headers}).subscribe({
       next : () => { this.router.navigate(['movie'])},
       error : (error) => console.log(error)
     })
